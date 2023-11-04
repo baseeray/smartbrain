@@ -1,13 +1,13 @@
-import Navigation from './components/Navigation/navigation.jsx';
-import Logo from './components/Logo/logo.jsx';
-import ImageLinkForm from './components/ImageLinkForm/imagelinkform.jsx';
-import FaceCount from './components/FaceCount/facecount.jsx';
+import Navigation from './components/navigation.jsx';
+import Logo from './components/logo.jsx';
+import ImageLinkForm from './components/imagelinkform.jsx';
+import FaceCount from './components/facecount.jsx';
 import ParticlesBg from 'particles-bg';
 import './App.css';
 import { Component } from 'react';
-import FaceRecognition from './components/FaceRecognition/facerecognition.jsx';
-import SignIn from './components/SignIn/signin.jsx';
-import Register from './components/Register/register.jsx';
+import FaceRecognition from './components/facerecognition.jsx';
+import SignIn from './components/signin.jsx';
+import Register from './components/register.jsx';
 
 
 const initState ={
@@ -62,7 +62,7 @@ class App extends Component {
   onButtonSubmit = () => {
     if(this.state.input) {
       this.setState({imageUrl: this.state.input});
-      fetch('http://localhost:1234/imageUrl/', {
+      fetch('https://face-detection-brain-3e5361aadcc1.herokuapp.com/imageUrl/', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -72,7 +72,7 @@ class App extends Component {
       .then(response => response.json())
       .then((response) => {
         if(response.regions) {
-          fetch('http://localhost:1234/image/', {
+          fetch('https://face-detection-brain-3e5361aadcc1.herokuapp.com/image/', {
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
